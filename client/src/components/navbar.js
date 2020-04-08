@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, Switch, Route, withRouter } from "react-router-dom";
-import Saved from "./pages/savedBooks";
-import Home from "./pages/Home"
+import Saved from "../pages/savedBooks";
+import Home from "../pages/Home"
 
 function Navbar() {
 
