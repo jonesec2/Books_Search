@@ -1,11 +1,17 @@
 import React from "react";
-import Banner from "../components/Banner";
+import Title from "../components/Title";
+import Container from "../components/Container";
+import SubTitle from "../components/SubTitle";
 
 
 export default function Home() {
 
 
    return (
-      <Banner/>
+      <Container>
+         <Title/>
+         <SubTitle/>
+      </Container>
+   
    )
 }

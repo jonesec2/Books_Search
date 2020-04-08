@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import API from "../utils/savedAPI";
-import Banner from "../components/Banner"
+import Banner from "../components/Title"
 
 export default function SavedBooks() {
 
