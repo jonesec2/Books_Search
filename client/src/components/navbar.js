@@ -21,7 +21,7 @@ function Navbar() {
          </nav>
 
          <Switch>
-            <Route exact path="/">
+            <Route exact path={["/", "/saved"]}>
                <Home />
             </Route>
             <Route path="/savedBooks">
