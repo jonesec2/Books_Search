@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, Switch, Route, withRouter } from "react-router-dom";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 import Saved from "../pages/savedBooks";
 import Home from "../pages/Home"
 
@@ -20,14 +21,20 @@ function Navbar() {
             </div>
          </nav>
 
-         <Switch>
-            <Route exact path={["/", "/saved"]}>
-               <Home />
-            </Route>
-            <Route path="/savedBooks">
-               <Saved />
-            </Route>
-         </Switch>
+         <TransitionGroup>
+            <CSSTransition
+               key={location.key}
+               timeout={{ enter: 300, exit: 300 }}
+               classNames={'fade'}
+            ></CSSTransition>
+            <Switch>
+               <Route exact path={["/", "/saved"]}>
+                  <Home />
+               </Route>
+               <Route path="/savedBooks">
+                  <Saved />
+               </Route>
+            </Switch>
       </div>
    )
 } 
