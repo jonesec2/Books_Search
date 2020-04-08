@@ -5,6 +5,6 @@ export default {
       return axios.get("/api/saved");
    },
    saveBook: function(savedBook) {
-      return axios.post("/api/saved");
+      return axios.post("/api/saved", savedBook);
    }
 }
