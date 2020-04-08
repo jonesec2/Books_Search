@@ -4,13 +4,13 @@ import { TransitionGroup, CSSTransition } from "react-transition-group";
 import Saved from "../pages/savedBooks";
 import Home from "../pages/Home"
 
-function Navbar() {
+function Navbar({ location }) {
 
    return (
-      <div id="navbar">
-         <nav className="navbar navbar-dark bg-primary fixed-top">
-            <div className="collapse navbar-collapse" id="navbarSupportedContent">
-               <ul className="navbar-nav">
+      <div id="top">
+         <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="collapse navbar-collapse" id="navbarNav">
+               <ul class="navbar-nav">
                   <li className="nav-item">
                      <Link className="nav-link js-scroll-trigger" to="/">Book Search</Link>
                   </li>
@@ -26,17 +26,19 @@ function Navbar() {
                key={location.key}
                timeout={{ enter: 300, exit: 300 }}
                classNames={'fade'}
-            ></CSSTransition>
-            <Switch>
-               <Route exact path={["/", "/saved"]}>
-                  <Home />
-               </Route>
-               <Route path="/savedBooks">
-                  <Saved />
-               </Route>
-            </Switch>
+            >
+               <Switch>
+                  <Route exact path="/">
+                     <Home />
+                  </Route>
+                  <Route path="/savedBooks">
+                     <Saved />
+                  </Route>
+               </Switch>
+            </CSSTransition>
+         </TransitionGroup>
       </div>
    )
-} 
+}
 
 export default withRouter(Navbar);

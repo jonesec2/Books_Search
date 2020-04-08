@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import API from "../utils/savedAPI";
+import Banner from "../components/Banner"
 
 export default function SavedBooks() {
 
@@ -18,7 +19,7 @@ export default function SavedBooks() {
    loadSaved();   
 
    return (
-      <h1>Saved</h1>
+      <Banner/>
       
    )
 }
