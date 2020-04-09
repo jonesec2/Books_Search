@@ -22,7 +22,7 @@ const bookSeed = [
       authors: ["Emily Bronte"],
       description: "Published in 1845, Emily Bronte’s gothic novel set on the windy moors of Yorkshire is the story of the doomed love between Catherine Earnshaw and her father’s adopted son, Heathcliff. The book was initially poorly received by many critics who found its dark, tragic story needlessly harsh and disturbing. That opinion has not endured, and the only novel Emily Bronte published is now considered to be one of the great classics of English literature.",
       image: "https://books.google.com/books/content?id=KhMYAAAAYAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
-      link: "https://books.google.com/books?id=KW0YAAAAYAAJ&newbks=1&newbks_redir=0&hl=en"
+      link: "https://www.google.com/books/edition/Wuthering_Heights/KhMYAAAAYAAJ?hl=en&gbpv=1&dq=wuthering+heights&printsec=frontcover"
    },
    {
       title: "The Three Musketeers",
