@@ -38,13 +38,10 @@ export default function Home() {
       <Wrapper>
          <Container>
             <Title />
-            <SubTitle />
+            <SubTitle>Search for books using Google Books API</SubTitle>
          </Container>
          <Container>
-
-         </Container>
-         <Container>
-            Results
+            <SubTitle>Saved Books</SubTitle>
             {books.length ? (
                <List>
                   {books.map(book => (

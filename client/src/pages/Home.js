@@ -7,11 +7,13 @@ import List from "../components/List";
 import ListItem from "../components/ListItem"
 import API from "../utils/savedAPI";
 import { Input, FormBtn } from "../components/Search";
+import savedAPI from "../utils/savedAPI";
 
 
 export default function Home() {
 
    const [books, setBooks] = useState([])
+   const [results, setResults] = useState([])
    const [formObject, setFormObject] = useState({})
 
 
@@ -50,11 +52,11 @@ export default function Home() {
       <Wrapper>
          <Container>
             <Title />
-            <SubTitle />
+            <SubTitle>Search for books using Google Books API</SubTitle>
          </Container>
          <Container>
+            <SubTitle>Search Here</SubTitle>
             <form>
-               Search by Title or Author
                <Input
                   onChange={handleInputChange}
                   name="title"
@@ -74,7 +76,24 @@ export default function Home() {
             </form>
          </Container>
          <Container>
-            Results
+            <SubTitle>Results Here</SubTitle>
+            {results.length ? (
+               <List>
+                  {results.map(result => (
+
+                     <ListItem
+                        _id={result._id}
+                        title={result.title}
+                        authors={result.authors}
+                        description={result.description}
+                        image={result.image}
+                        link={result.link}
+                        loadBooks={loadBooks}
+                     >
+                     </ListItem>
+                  ))}
+               </List>
+            ) : (<h5>No Results to Display</h5>)}
          </Container>
       </Wrapper>
 
