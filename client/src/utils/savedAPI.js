@@ -8,6 +8,7 @@ export default {
       return axios.post("/api/saved", savedBook);
    },
    deleteBook: function(id) {
-      return axios.delete("/api/books/" + id);
+      console.log("saved API")
+      return axios.delete("/api/saved/" + id);
    }
 }
