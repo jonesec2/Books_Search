@@ -8,9 +8,9 @@ function Navbar({ location }) {
 
    return (
       <div id="top">
-         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="collapse navbar-collapse" id="navbarNav">
-               <ul class="navbar-nav">
+         <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <div className="collapse navbar-collapse" id="navbarNav">
+               <ul className="navbar-nav">
                   <li className="nav-item">
                      <Link className="nav-link js-scroll-trigger" to="/">Book Search</Link>
                   </li>

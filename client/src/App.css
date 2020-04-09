@@ -22,6 +22,10 @@
    transition: opacity 300ms ease-in;
 }
 
+.img-fluid {
+   max-width: 20vh;
+   max-height: 15ch;
+}
 
 /* 
 
