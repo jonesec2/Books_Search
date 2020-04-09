@@ -6,5 +6,8 @@ export default {
    },
    saveBook: function(savedBook) {
       return axios.post("/api/saved", savedBook);
+   },
+   deleteBook: function(id) {
+      return axios.delete("/api/books/" + id);
    }
 }

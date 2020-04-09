@@ -6,11 +6,15 @@ import Wrapper from "../components/Wrapper";
 import List from "../components/List";
 import ListItem from "../components/ListItem"
 import API from "../utils/savedAPI";
+// import DeleteButton from "react";
 
 
 export default function Home() {
 
    const [books, setBooks] = useState([])
+
+
+   console.log(books[0])
 
 
    useEffect(() => {
@@ -24,7 +28,11 @@ export default function Home() {
          )
          .catch(err => console.log(err));
    };
-
+   // function deleteBook(id) {
+   //    API.deleteBook(id)
+   //       .then(res => loadBooks())
+   //       .catch(err => console.log(err));
+   // }
 
    return (
       <Wrapper>
@@ -40,12 +48,16 @@ export default function Home() {
             {books.length ? (
                <List>
                   {books.map(book => (
-                     <ListItem 
-                     title={book.title}
-                     authors={book.authors}
-                     description={book.description}
-                     image={book.image}
-                     link={book.link}>
+
+                     <ListItem
+                        _id={book._id}
+                        title={book.title}
+                        authors={book.authors}
+                        description={book.description}
+                        image={book.image}
+                        link={book.link}
+                        loadBooks={loadBooks}
+                     >
                      </ListItem>
                   ))}
                </List>

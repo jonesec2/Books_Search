@@ -1,12 +1,23 @@
 import React from "react";
+import API from "../utils/savedAPI";
+
 
 export default function ListItem(props) {
+
+
+   function removeBook(id) {
+      API.deleteBook(id)
+      .then(res => props.loadBooks)
+      .catch(err => console.log(err));
+   }
+
    return (
       <li className="list-group-item">
          <div className="row">
             <h5 className="col-lg-6 col-md-12 float-left" >{props.title}</h5>
-            <a href={props.link}  rel="noreferrer noopener" target="_blank" className="col-lg-1 col-md-2 col-sm-auto border btn btn-light float-right" role="button">View</a>
-            <a className="col-lg-1 col-md-2 col-sm-auto border btn btn-light float-right" role="button">Delete</a>
+            <a href={props.link} rel="noreferrer noopener" target="_blank" className="col-lg-1 col-md-2 col-sm-auto border btn btn-light float-right" role="button">View</a>
+            <button className="col-lg-1 col-md-2 col-sm-auto border btn btn-light float-right" onClick={removeBook} tabIndex="0">Delete</button>
+            {/* {props.child} */}
          </div>
          <div className="row">
             <p className="col-12">{props.authors}</p>
