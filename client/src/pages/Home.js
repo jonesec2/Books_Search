@@ -5,9 +5,10 @@ import SubTitle from "../components/SubTitle";
 import Wrapper from "../components/Wrapper";
 import List from "../components/List";
 import ListItem from "../components/ListItem"
-import API from "../utils/savedAPI";
+import searchAPI from "../utils/searchAPI";
+import savedAPI from "../utils/savedAPI"
 import { Input, FormBtn } from "../components/Search";
-import savedAPI from "../utils/savedAPI";
+
 
 
 export default function Home() {
@@ -22,7 +23,7 @@ export default function Home() {
    }, [])
 
    function loadBooks() {
-      API.getSaved()
+      savedAPI.getSaved()
          .then(res =>
             setBooks(res.data)
          )
@@ -34,10 +35,15 @@ export default function Home() {
       setFormObject({ ...formObject, [name]: value })
    };
 
+   function apiRequest(event) {
+      event.preventDefault();
+      searchAPI.requestBooks();
+   }
+
    function handleFormSubmit(event) {
       event.preventDefault();
       if (formObject.title && formObject.author) {
-         API.saveBook({
+         savedAPI.saveBook({
             title: formObject.title,
             author: formObject.author,
             synopsis: formObject.synopsis
@@ -69,7 +75,7 @@ export default function Home() {
                />
                <FormBtn
                   disabled={!(formObject.author || formObject.title)}
-                  onClick={handleFormSubmit}
+                  onClick={apiRequest}
                >
                   Submit Book
               </FormBtn>

@@ -5,7 +5,7 @@ import SubTitle from "../components/SubTitle";
 import Wrapper from "../components/Wrapper";
 import List from "../components/List";
 import ListItem from "../components/ListItem"
-import API from "../utils/savedAPI";
+import savedAPI from "../utils/savedAPI";
 // import DeleteButton from "react";
 
 
@@ -22,17 +22,12 @@ export default function Home() {
    }, [])
 
    function loadBooks() {
-      API.getSaved()
+      savedAPI.getSaved()
          .then(res =>
             setBooks(res.data)
          )
          .catch(err => console.log(err));
    };
-   // function deleteBook(id) {
-   //    API.deleteBook(id)
-   //       .then(res => loadBooks())
-   //       .catch(err => console.log(err));
-   // }
 
    return (
       <Wrapper>
