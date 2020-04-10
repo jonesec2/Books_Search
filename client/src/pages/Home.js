@@ -7,6 +7,7 @@ import List from "../components/List";
 import API from "../utils/API";
 import { Input, FormBtn } from "../components/Search";
 import SearchItem from "../components/SearchItem";
+import NoImage from "../img/NoImageFound.png"
 
 
 
@@ -64,15 +65,27 @@ export default function Home() {
                   {results.map(result => (
                      <SearchItem
                         title={result.volumeInfo.title}
-                        authors={result.volumeInfo.authors}
-                        description={result.volumeInfo.description}
+                        authors={
+                           result.volumeInfo.authors === undefined
+                           ? "No authors found"
+                           : result.volumeInfo.authors
+                        }
+                        description={
+                           result.volumeInfo.description === undefined
+                           ? "No description found"
+                           : result.volumeInfo.description
+                        }
                         image={
                            result.volumeInfo.imageLinks === undefined
-                           ? "https://via.placeholder.com/64x64.png?text=No+Image+Found"
+                           ? NoImage
                            : result.volumeInfo.imageLinks.thumbnail
                         }
-                        link={result.volumeInfo.infoLink}
-                        // showResults={showResults}
+                        link={
+                           result.volumeInfo.infoLink === undefined
+                           ? "https://www.google.com/search?tbm=bks&sxsrf=ALeKk02LqFqgr-nSOF6dTHMYMQ1uAgZ-HA%3A1586547420101&ei=3MqQXt7sBbalytMPqZKhgAE&q=whoops1%21+.NoResults%21+.UhO+.Try.Again%21&oq=whoops1%21+.NoResults%21+.UhO+.Try.Again%21&gs_l=psy-ab.3...2284.2284.0.2603.1.1.0.0.0.0.120.120.0j1.1.0....0...1c.1.64.psy-ab..0.0.0....0.6W7UtTvb2yA"
+                           : result.volumeInfo.infoLink
+                        }
+                        
                      >
                      </SearchItem>
                   ))}

@@ -7,8 +7,8 @@ export default function SearchItem(props) {
 
    function saveBook(id) {
       console.log("test", id)
-      API.deleteBook(id)
-         .then(res => props.loadBooks())
+      API.saveBook(id)
+         // .then(res => props.loadBooks())
          .catch(err => console.log(err));
    }
 
