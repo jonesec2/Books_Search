@@ -5,8 +5,7 @@ import SubTitle from "../components/SubTitle";
 import Wrapper from "../components/Wrapper";
 import List from "../components/List";
 import ListItem from "../components/ListItem"
-import searchAPI from "../utils/searchAPI";
-import savedAPI from "../utils/savedAPI"
+import API from "../utils/API";
 import { Input, FormBtn } from "../components/Search";
 
 
@@ -23,7 +22,7 @@ export default function Home() {
    }, [])
 
    function loadBooks() {
-      savedAPI.getSaved()
+      API.getSaved()
          .then(res =>
             setBooks(res.data)
          )
@@ -37,21 +36,32 @@ export default function Home() {
 
    function apiRequest(event) {
       event.preventDefault();
-      searchAPI.requestBooks();
-   }
-
-   function handleFormSubmit(event) {
-      event.preventDefault();
-      if (formObject.title && formObject.author) {
-         savedAPI.saveBook({
-            title: formObject.title,
-            author: formObject.author,
-            synopsis: formObject.synopsis
+      if (formObject.title
+         // || formObject.author
+      ) {
+         API.requestBooks({
+            title: formObject.title
          })
-            .then(res => loadBooks())
-            .catch(err => console.log(err));
+            .then(res =>
+               console.log(res.data)
+               // setResults(res.data)
+            )
+            .catch(err => console.log("request books " + err))
       }
    };
+
+   // function handleFormSubmit(event) {
+   //    event.preventDefault();
+   //    if (formObject.title || formObject.author) {
+   //       API.saveBook({
+   //          title: formObject.title,
+   //          author: formObject.author,
+   //       })
+   //       console.log(formObject.title + " " + formObject.author)
+   //          .then(res => loadBooks())
+   //          .catch(err => console.log(err));
+   //    }
+   // };
 
 
    return (
@@ -61,17 +71,12 @@ export default function Home() {
             <SubTitle>Search for books using Google Books API</SubTitle>
          </Container>
          <Container>
-            <SubTitle>Search Here</SubTitle>
+            <SubTitle>Search By Title of Book</SubTitle>
             <form>
                <Input
                   onChange={handleInputChange}
                   name="title"
-                  placeholder="Title (required)"
-               />
-               <Input
-                  onChange={handleInputChange}
-                  name="author"
-                  placeholder="Author (required)"
+                  placeholder="Title"
                />
                <FormBtn
                   disabled={!(formObject.author || formObject.title)}

@@ -1,6 +1,13 @@
 import axios from "axios";
+const key = "&key=AIzaSyBCbxsdjBPKIvd6rble1hwEZ6BbffLJi2o"
+const url = "https://www.googleapis.com/books/v1/volumes?q="
 
 export default {
+   requestBooks: function (title) {
+      console.log(title.title)
+      console.log(url + title.title + key)
+      return axios.get(url + title + key)
+   },
    getSaved: function() {
       return axios.get("/api/saved");
    },

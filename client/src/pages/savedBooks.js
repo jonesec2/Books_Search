@@ -5,7 +5,7 @@ import SubTitle from "../components/SubTitle";
 import Wrapper from "../components/Wrapper";
 import List from "../components/List";
 import ListItem from "../components/ListItem"
-import savedAPI from "../utils/savedAPI";
+import savedAPI from "../utils/API";
 // import DeleteButton from "react";
 
 
