@@ -4,29 +4,25 @@ import Container from "../components/Container";
 import SubTitle from "../components/SubTitle";
 import Wrapper from "../components/Wrapper";
 import List from "../components/List";
-import ListItem from "../components/ListItem"
 import API from "../utils/API";
 import { Input, FormBtn } from "../components/Search";
+import SearchItem from "../components/SearchItem";
 
 
 
 export default function Home() {
 
-   const [books, setBooks] = useState([])
    const [results, setResults] = useState([])
    const [formObject, setFormObject] = useState({})
 
 
-   useEffect(() => {
-      loadBooks()
-   }, [])
+   // useEffect(() => {
+   //    console.log(results)
+   //    showResults()
+   // }, [])
 
-   function loadBooks() {
-      API.getSaved()
-         .then(res =>
-            setBooks(res.data)
-         )
-         .catch(err => console.log(err));
+   function showResults() {
+      console.log(results)
    };
 
    function handleInputChange(event) {
@@ -36,15 +32,16 @@ export default function Home() {
 
    function apiRequest(event) {
       event.preventDefault();
-      if (formObject.title
-         // || formObject.author
-      ) {
+      if (formObject.title) {
          API.requestBooks({
             title: formObject.title
          })
             .then(res =>
-               console.log(res.data)
-               // setResults(res.data)
+               // console.log(res.data.items)
+               setResults(res.data.items)
+            )
+            .then(res =>
+               showResults()
             )
             .catch(err => console.log("request books " + err))
       }
@@ -91,17 +88,15 @@ export default function Home() {
             {results.length ? (
                <List>
                   {results.map(result => (
-
-                     <ListItem
-                        _id={result._id}
-                        title={result.title}
-                        authors={result.authors}
-                        description={result.description}
-                        image={result.image}
-                        link={result.link}
-                        loadBooks={loadBooks}
+                     <SearchItem
+                        title={result.volumeInfo.title}
+                        authors={result.volumeInfo.authors}
+                        description={result.volumeInfo.description}
+                        image={result.volumeInfo.imageLinks.thumbnail}
+                        link={result.volumeInfo.infoLink}
+                        // showResults={showResults}
                      >
-                     </ListItem>
+                     </SearchItem>
                   ))}
                </List>
             ) : (<h5>No Results to Display</h5>)}

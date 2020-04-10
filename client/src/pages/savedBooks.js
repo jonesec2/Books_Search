@@ -4,8 +4,8 @@ import Container from "../components/Container";
 import SubTitle from "../components/SubTitle";
 import Wrapper from "../components/Wrapper";
 import List from "../components/List";
-import ListItem from "../components/ListItem"
-import savedAPI from "../utils/API";
+import SavedItem from "../components/SavedItem"
+import API from "../utils/API";
 // import DeleteButton from "react";
 
 
@@ -13,17 +13,16 @@ export default function Home() {
 
    const [books, setBooks] = useState([])
 
-
    console.log(books[0])
-
 
    useEffect(() => {
       loadBooks()
    }, [])
 
    function loadBooks() {
-      savedAPI.getSaved()
+      API.getSaved()
          .then(res =>
+            // console.log(res.data)
             setBooks(res.data)
          )
          .catch(err => console.log(err));
@@ -41,7 +40,7 @@ export default function Home() {
                <List>
                   {books.map(book => (
 
-                     <ListItem
+                     <SavedItem
                         _id={book._id}
                         title={book.title}
                         authors={book.authors}
@@ -50,7 +49,7 @@ export default function Home() {
                         link={book.link}
                         loadBooks={loadBooks}
                      >
-                     </ListItem>
+                     </SavedItem>
                   ))}
                </List>
             ) : (<h3>No Results to Display</h3>)}
