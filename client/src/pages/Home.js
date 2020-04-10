@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Title from "../components/Title";
 import Container from "../components/Container";
 import SubTitle from "../components/SubTitle";
@@ -15,16 +15,6 @@ export default function Home() {
    const [results, setResults] = useState([])
    const [formObject, setFormObject] = useState({})
 
-
-   // useEffect(() => {
-   //    console.log(results)
-   //    showResults()
-   // }, [])
-
-   function showResults() {
-      console.log(results)
-   };
-
    function handleInputChange(event) {
       const { name, value } = event.target;
       setFormObject({ ...formObject, [name]: value })
@@ -37,29 +27,13 @@ export default function Home() {
             title: formObject.title
          })
             .then(res =>
-               // console.log(res.data.items)
                setResults(res.data.items)
             )
             .then(res =>
-               showResults()
-            )
+               console.log(results))
             .catch(err => console.log("request books " + err))
       }
    };
-
-   // function handleFormSubmit(event) {
-   //    event.preventDefault();
-   //    if (formObject.title || formObject.author) {
-   //       API.saveBook({
-   //          title: formObject.title,
-   //          author: formObject.author,
-   //       })
-   //       console.log(formObject.title + " " + formObject.author)
-   //          .then(res => loadBooks())
-   //          .catch(err => console.log(err));
-   //    }
-   // };
-
 
    return (
       <Wrapper>
@@ -92,7 +66,11 @@ export default function Home() {
                         title={result.volumeInfo.title}
                         authors={result.volumeInfo.authors}
                         description={result.volumeInfo.description}
-                        image={result.volumeInfo.imageLinks.thumbnail}
+                        image={
+                           result.volumeInfo.imageLinks === undefined
+                           ? "https://via.placeholder.com/64x64.png?text=No+Image+Found"
+                           : result.volumeInfo.imageLinks.thumbnail
+                        }
                         link={result.volumeInfo.infoLink}
                         // showResults={showResults}
                      >

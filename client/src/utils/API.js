@@ -4,12 +4,12 @@ const url = "https://www.googleapis.com/books/v1/volumes?q="
 
 export default {
    requestBooks: function (title) {
-      // const book = 'This is a test';
-      title.title.replace(/\s/g, '+');
+
+      const book = title.title.replace(/\s/g, '+');
       // console.log(book)
-      console.log(title.title)
-      console.log(url + title.title + key)
-      return axios.get(url + title.title + key)
+      console.log(book)
+      console.log(url + book + key)
+      return axios.get(url + book + key)
    },
    getSaved: function() {
       return axios.get("/api/saved");

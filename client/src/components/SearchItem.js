@@ -7,17 +7,17 @@ export default function SearchItem(props) {
 
    function saveBook(id) {
       console.log("test", id)
-      // API.deleteBook(id)
-      // .then(res => props.loadBooks())
-      // .catch(err => console.log(err));
+      API.deleteBook(id)
+         .then(res => props.loadBooks())
+         .catch(err => console.log(err));
    }
 
    return (
       <li className="list-group-item">
          <div className="row">
             <h5 className="col-lg-6 col-md-12 float-left" >{props.title}</h5>
-            <a href={props.link} rel="noreferrer noopener" target="_blank" className="col-lg-1 col-md-2 col-sm-auto border btn btn-light float-right" role="button">View</a>
-            <button className="col-lg-1 col-md-2 col-sm-auto border btn btn-light float-right" onClick={() => saveBook(props._id)} tabIndex="0">Save Book</button>
+            <a href={props.link} rel="noreferrer noopener" target="_blank" className="col-lg-2 col-md-2 col-sm-auto border btn btn-light float-right" role="button">View</a>
+            <button className="col-lg-2 col-md-2 col-sm-auto border btn btn-light float-right" onClick={() => saveBook(props._id)} tabIndex="0">Save Book</button>
          </div>
          <div className="row">
             <p className="col-12">{props.authors}</p>

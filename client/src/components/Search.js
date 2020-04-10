@@ -10,7 +10,7 @@ export function Input(props) {
 
 export function FormBtn(props) {
    return (
-      <button {...props}  className="col-3 col-md-6 btn btn-success">
+      <button {...props}  className="col-8 col-md-6 col-sm-8 btn btn-success">
          {props.children}
       </button>
    );
