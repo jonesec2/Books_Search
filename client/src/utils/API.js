@@ -15,6 +15,7 @@ export default {
       return axios.get("/api/saved");
    },
    saveBook: function(savedBook) {
+      console.log("react save")
       return axios.post("/api/saved", savedBook);
    },
    deleteBook: function(id) {

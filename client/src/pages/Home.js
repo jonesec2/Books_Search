@@ -30,8 +30,6 @@ export default function Home() {
             .then(res =>
                setResults(res.data.items)
             )
-            .then(res =>
-               console.log(results))
             .catch(err => console.log("request books " + err))
       }
    };
@@ -64,6 +62,7 @@ export default function Home() {
                <List>
                   {results.map(result => (
                      <SearchItem
+                        id={result.volumeInfo.id}
                         title={result.volumeInfo.title}
                         authors={
                            result.volumeInfo.authors === undefined
