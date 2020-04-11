@@ -6,7 +6,6 @@ export default function SavedItem(props) {
 
 
    function removeBook(id) {
-      console.log("test", id)
       API.deleteBook(id)
          .then(res => props.loadBooks())
          .catch(err => console.log(err));

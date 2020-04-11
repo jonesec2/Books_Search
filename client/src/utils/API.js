@@ -6,16 +6,12 @@ export default {
    requestBooks: function (title) {
 
       const book = title.title.replace(/\s/g, '+');
-      // console.log(book)
-      console.log(book)
-      console.log(url + book + key)
       return axios.get(url + book + key)
    },
    getSaved: function() {
       return axios.get("/api/saved");
    },
    saveBook: function(savedBook) {
-      console.log("react save")
       return axios.post("/api/saved", savedBook);
    },
    deleteBook: function(id) {

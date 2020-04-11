@@ -13,8 +13,6 @@ export default function Home() {
 
    const [books, setBooks] = useState([])
 
-   console.log(books[0])
-
    useEffect(() => {
       loadBooks()
    }, [])
@@ -22,7 +20,6 @@ export default function Home() {
    function loadBooks() {
       API.getSaved()
          .then(res =>
-            // console.log(res.data)
             setBooks(res.data)
          )
          .catch(err => console.log(err));

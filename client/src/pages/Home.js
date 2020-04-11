@@ -49,7 +49,7 @@ export default function Home() {
                   placeholder="Title"
                />
                <FormBtn
-                  disabled={!(formObject.author || formObject.title)}
+                  disabled={!(formObject.title)}
                   onClick={apiRequest}
                >
                   Submit Book
