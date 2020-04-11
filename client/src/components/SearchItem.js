@@ -4,10 +4,6 @@ import API from "../utils/API";
 
 export default function SearchItem(props) {
 
-   // function changeButton {
-   //    document.getElementById({props.id})
-   // }
-
    function saveBook(props) {
       API.saveBook({
          title: props.title,
@@ -16,7 +12,6 @@ export default function SearchItem(props) {
          image: props.image,
          link: props.link
       })
-         // .then(document.getElementById({ id: props.id }).value = "Saved")
          .then(alert("Book Saved"))
          .catch(err => console.log(err));
    }

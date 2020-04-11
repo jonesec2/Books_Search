@@ -6,7 +6,6 @@ import Wrapper from "../components/Wrapper";
 import List from "../components/List";
 import SavedItem from "../components/SavedItem"
 import API from "../utils/API";
-// import DeleteButton from "react";
 
 
 export default function Home() {

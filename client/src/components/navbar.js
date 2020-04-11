@@ -1,10 +1,9 @@
 import React from "react";
 import { Link, Switch, Route, withRouter } from "react-router-dom";
-import { TransitionGroup, CSSTransition } from "react-transition-group";
 import Saved from "../pages/savedBooks";
 import Home from "../pages/Home"
 
-function Navbar({ location }) {
+function Navbar() {
 
    return (
       <div id="top">
@@ -21,12 +20,6 @@ function Navbar({ location }) {
             {/* </div> */}
          </nav>
 
-         <TransitionGroup>
-            <CSSTransition
-               key={location.key}
-               timeout={{ enter: 300, exit: 300 }}
-               classNames={'fade'}
-            >
                <Switch>
                   <Route exact path="/">
                      <Home />
@@ -35,8 +28,6 @@ function Navbar({ location }) {
                      <Saved />
                   </Route>
                </Switch>
-            </CSSTransition>
-         </TransitionGroup>
       </div>
    )
 }
