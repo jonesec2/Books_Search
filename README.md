@@ -1,4 +1,4 @@
-# [Books_Search]-(https://lit-plains-95784.herokuapp.com/)
+# [Books_Search](https://lit-plains-95784.herokuapp.com/)
 
 A simple MERN app that uses the Google Books API to search for books and save them to view later.
 
